@@ -1,9 +1,7 @@
 package com.example.catpic.fullScreenFragment
 
-import android.Manifest
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,7 +48,7 @@ class FullScreenFragment : Fragment() {
             }
             save.setOnClickListener {
                 if (catUri != null) {
-                    if(isWritePermissionGranted()){
+                    if (isWritePermissionGranted()) {
                         viewModel.downloadImage(catUri, requireContext())
                     } else {
                         askPermissions()

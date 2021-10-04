@@ -2,14 +2,9 @@ package com.example.catpic.fullScreenFragment
 
 import android.app.DownloadManager
 import android.content.Context
-import android.database.Cursor
 import android.net.Uri
 import android.os.Environment
 import androidx.lifecycle.ViewModel
-import com.example.catpic.CatRepository
-import com.example.catpic.MainActivity
-import com.example.catpic.databinding.FragmentFullScreenBinding
-import java.io.File
 
 private const val DELIMITER = "/"
 
