@@ -28,7 +28,7 @@ class CatViewHolder(
 
     private fun setListener(catPic: CatPic) {
         binding.image.setOnClickListener {
-            catPic.id?.let { it1 -> catPic.url?.let { it2 -> listener.cardFlip(it2, it1) } }
+            catPic.id.let { id -> catPic.url.let { url -> listener.cardFlip(url, id) } }
         }
     }
 

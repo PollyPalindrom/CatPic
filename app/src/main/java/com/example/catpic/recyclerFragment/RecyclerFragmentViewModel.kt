@@ -11,7 +11,7 @@ import com.example.catpic.retrofit.CatPic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RecyclerFragmentViewModel(val repository: CatRepository) : ViewModel() {
+class RecyclerFragmentViewModel(private val repository: CatRepository) : ViewModel() {
 
     var cats: LiveData<PagingData<CatPic>> = repository.getCats().asLiveData()
 

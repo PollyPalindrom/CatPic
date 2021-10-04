@@ -11,7 +11,7 @@ class ViewModelFactory(private val repository: CatRepository) : ViewModelProvide
             return RecyclerFragmentViewModel(repository) as T
         }
         if (modelClass.isAssignableFrom(FullScreenFragmentViewModel::class.java)) {
-            return FullScreenFragmentViewModel(repository) as T
+            return FullScreenFragmentViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

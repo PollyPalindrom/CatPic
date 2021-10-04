@@ -11,11 +11,13 @@ import com.example.catpic.MainActivity
 import com.example.catpic.databinding.FragmentFullScreenBinding
 import java.io.File
 
-class FullScreenFragmentViewModel(private val repository: CatRepository) : ViewModel() {
+private const val DELIMITER = "/"
+
+class FullScreenFragmentViewModel() : ViewModel() {
 
 
     fun downloadImage(url: String, context: Context) {
-        val filename = url.substringAfterLast("/")
+        val filename = url.substringAfterLast(DELIMITER)
         val request = DownloadManager.Request(Uri.parse(url))
             .setTitle(filename)
             .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename)

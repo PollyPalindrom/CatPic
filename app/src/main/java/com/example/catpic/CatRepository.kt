@@ -17,7 +17,7 @@ class CatRepository(val catApi: CatApi) {
     fun getCats(): Flow<PagingData<CatPic>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 50,
+                pageSize = 10,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = { CatPagingSource(catApi) }

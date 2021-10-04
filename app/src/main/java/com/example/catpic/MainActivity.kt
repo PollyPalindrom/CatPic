@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openRecyclerFragment() {
-        val recyclerFragment = RecyclerFragment()
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, recyclerFragment).commit()
+            .replace(R.id.container, RecyclerFragment.newInstance())
+            .commit()
     }
 
     fun flipCard(catUri: String, id: String) {

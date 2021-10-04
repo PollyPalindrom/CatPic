@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.catpic.*
 import com.example.catpic.databinding.FragmentRecyclerBinding
 import com.example.catpic.databinding.ItemBinding
+import com.example.catpic.fullScreenFragment.FullScreenFragment
 import com.example.catpic.recycler.PaginationCatAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -65,4 +66,8 @@ class RecyclerFragment : Fragment(), CatListener {
         (activity as MainActivity).flipCard(catUri, id)
     }
 
+    companion object {
+        fun newInstance(): RecyclerFragment =
+            RecyclerFragment()
+    }
 }

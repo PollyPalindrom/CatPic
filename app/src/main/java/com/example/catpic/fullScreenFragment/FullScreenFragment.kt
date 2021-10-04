@@ -34,20 +34,18 @@ class FullScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val catUri = arguments?.getString(CAT_URI)
         val mainActivity = activity as MainActivity
-        binding.toolbar.title = "ID: " + arguments?.getString(CAT_ID)
         if (catUri != null) {
-            Glide.with(binding.image.context)
-                .load(catUri)
-                .centerCrop()
-                .placeholder(R.drawable.ic_baseline_android_24)
-                .into(binding.image)
+            loadPicture(catUri)
         }
-        binding.toolbar.setOnClickListener {
-            mainActivity.supportFragmentManager.popBackStack()
-        }
-        binding.save.setOnClickListener {
-            if (catUri != null) {
-                viewModel.downloadImage(catUri, requireContext())
+        binding.apply {
+            toolbar.title = getString(R.string.id) + arguments?.getString(CAT_ID)
+            toolbar.setOnClickListener {
+                mainActivity.supportFragmentManager.popBackStack()
+            }
+            save.setOnClickListener {
+                if (catUri != null) {
+                    viewModel.downloadImage(catUri, requireContext())
+                }
             }
         }
         mainActivity.onBackPressedDispatcher.addCallback(mainActivity,
@@ -58,16 +56,22 @@ class FullScreenFragment : Fragment() {
             })
     }
 
-    companion object {
-        fun newInstance(catUri: String, id: String): FullScreenFragment {
-            val fragment = FullScreenFragment()
-            val args = Bundle()
-            args.putString(CAT_URI, catUri)
-            args.putString(CAT_ID, id)
-            fragment.arguments = args
-            return fragment
+    private fun loadPicture(catUri: String) {
+        Glide.with(binding.image.context)
+            .load(catUri)
+            .centerCrop()
+            .placeholder(R.drawable.ic_baseline_android_24)
+            .into(binding.image)
+    }
 
-        }
+    companion object {
+        fun newInstance(catUri: String, id: String): FullScreenFragment =
+            FullScreenFragment().apply {
+                arguments = Bundle().apply {
+                    putString(CAT_URI, catUri)
+                    putString(CAT_ID, id)
+                }
+            }
 
         private const val CAT_URI = "CAT_URI"
         private const val CAT_ID = "CAT_ID"

@@ -7,7 +7,8 @@ import com.example.catpic.retrofit.CatPic
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val STARTING_PAGE_INDEX = 1
+private const val STARTING_PAGE_INDEX = 0
+private const val NEXT_PAGE = 1
 
 class CatPagingSource(
     private val service: CatApi
@@ -16,11 +17,11 @@ class CatPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CatPic> {
         val position = params.key ?: STARTING_PAGE_INDEX
         return try {
-            val response = service.getListOfCats()
+            val response = service.getListOfCats(page = position, limit = params.loadSize)
             val nextKey = if (response.isEmpty()) {
                 null
             } else {
-                position + (params.loadSize / 50)
+                position + NEXT_PAGE
             }
             LoadResult.Page(
                 data = response,
