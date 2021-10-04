@@ -18,7 +18,7 @@ import com.example.catpic.recycler.PaginationCatAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
+private const val SPAN_COUNT = 2
 class RecyclerFragment : Fragment(), CatListener {
 
     private var binding: FragmentRecyclerBinding? = null
@@ -39,7 +39,7 @@ class RecyclerFragment : Fragment(), CatListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.recycler?.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = GridLayoutManager(context, SPAN_COUNT)
             adapter = catAdapter
         }
 
