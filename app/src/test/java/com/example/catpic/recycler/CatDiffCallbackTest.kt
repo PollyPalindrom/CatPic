@@ -5,10 +5,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class CatDiffCallbackTest {
-    val firstCat = CatPic("1", "url1")
-    val secondCat = CatPic("2", "url2")
-    val thirdCat = CatPic("1", "url1")
-    val callback = CatDiffCallback()
+    private val firstCat = CatPic("1", "url1")
+    private val secondCat = CatPic("2", "url2")
+    private val thirdCat = CatPic("1", "url1")
+    private val callback = CatDiffCallback()
 
     @Test
     fun areItemsTheSameTest() {
